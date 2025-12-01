@@ -40,7 +40,7 @@ jobs:
       - name: Análisis con SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.Sonnar_GithubActions }}
-          SONAR_TOKEN: ${{ secrets.Sonnar_GithubActions }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
