@@ -29,26 +29,26 @@ export const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-              <UserPlus className="w-8 h-8 text-green-600" />
+        <div className="bg-white shadow-lg border border-gray-200 p-6 sm:p-8 rounded-lg">
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-accent-100 border border-accent-300 mb-4 rounded-lg">
+              <UserPlus className="w-7 h-7 sm:w-8 sm:h-8 text-accent-700" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900">Crear Cuenta</h1>
-            <p className="text-gray-600 mt-2">Regístrate en Encuestas QR</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">CREAR CUENTA</h1>
+            <p className="text-gray-600 mt-2 text-sm sm:text-base font-medium">Regístrate en el Sistema</p>
           </div>
 
           {error && (
-            <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+            <div className="mb-4 p-3 sm:p-4 bg-red-50 border-l-4 border-red-600 text-red-700 text-xs sm:text-sm rounded-md">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
-              <label htmlFor="displayName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="displayName" className="block text-xs font-bold text-gray-700 mb-2 uppercase tracking-wider">
                 Nombre Completo
               </label>
               <input
@@ -57,13 +57,13 @@ export const Register = () => {
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                placeholder="Tu nombre"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base transition-all"
+                placeholder="Juan Pérez"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-xs font-bold text-gray-700 mb-2 uppercase tracking-wider">
                 Correo Electrónico
               </label>
               <input
@@ -72,13 +72,13 @@ export const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                placeholder="tu@email.com"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base transition-all"
+                placeholder="usuario@empresa.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-xs font-bold text-gray-700 mb-2 uppercase tracking-wider">
                 Contraseña
               </label>
               <input
@@ -88,7 +88,7 @@ export const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base transition-all"
                 placeholder="Mínimo 6 caracteres"
               />
             </div>
@@ -96,17 +96,17 @@ export const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition"
+              className="w-full bg-accent-600 text-white py-2.5 sm:py-3 rounded-md font-bold hover:bg-accent-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg text-sm sm:text-base uppercase tracking-wide"
             >
               {loading ? 'Creando cuenta...' : 'Crear Cuenta'}
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+          <div className="mt-5 sm:mt-6 text-center pt-5 border-t border-gray-200">
+            <p className="text-xs sm:text-sm text-gray-600">
               ¿Ya tienes una cuenta?{' '}
-              <Link to="/login" className="text-blue-600 hover:text-blue-700 font-medium">
-                Inicia sesión aquí
+              <Link to="/login" className="text-accent-600 hover:text-accent-700 font-bold uppercase">
+                Inicia Sesión
               </Link>
             </p>
           </div>

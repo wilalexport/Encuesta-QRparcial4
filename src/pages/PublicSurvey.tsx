@@ -159,10 +159,10 @@ export const PublicSurvey = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 to-emerald-50">
         <div className="text-center">
           <div className="spinner"></div>
-          <p className="mt-4 text-gray-600">Cargando encuesta...</p>
+          <p className="mt-4 text-gray-600 font-medium">Cargando encuesta...</p>
         </div>
       </div>
     );
@@ -170,11 +170,11 @@ export const PublicSurvey = () => {
 
   if (error && !survey) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md text-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 to-emerald-50">
+        <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-8 max-w-md text-center">
           <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Encuesta no disponible</h1>
-          <p className="text-gray-600">{error}</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2 uppercase tracking-tight">Encuesta no disponible</h1>
+          <p className="text-gray-600 font-medium">{error}</p>
         </div>
       </div>
     );
@@ -182,35 +182,52 @@ export const PublicSurvey = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md text-center">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">¡Gracias por tu respuesta!</h1>
-          <p className="text-gray-600">Tu participación ha sido registrada exitosamente.</p>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 to-emerald-50">
+        <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-8 max-w-md text-center">
+          <CheckCircle className="w-16 h-16 text-accent-600 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 mb-2 uppercase tracking-tight">¡Gracias por tu respuesta!</h1>
+          <p className="text-gray-600 font-medium">Tu participación ha sido registrada exitosamente.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-emerald-50 py-12 px-4">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
           {/* Header */}
-          {survey?.cover_image_url && (
-            <div className="h-48 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
-          )}
+          <div className="bg-gradient-to-r from-primary-600 to-accent-600 px-8 py-12">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-white/90 text-sm font-bold uppercase tracking-wider">Encuestas QR</p>
+                  <p className="text-white/70 text-xs font-medium">Sistema de Recopilación de Datos</p>
+                </div>
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 uppercase tracking-tight">{survey?.title}</h1>
+              {survey?.description && (
+                <p className="text-white/90 font-medium text-lg leading-relaxed">{survey.description}</p>
+              )}
+              <div className="mt-6 flex items-center gap-2 text-white/80 text-sm">
+              </div>
+            </div>
+          </div>
           
           <div className="p-8">
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{survey?.title}</h1>
-              {survey?.description && (
-                <p className="text-gray-600">{survey.description}</p>
-              )}
+              <p className="text-gray-600 font-medium text-center py-4 bg-gray-50 rounded-md border border-gray-200">
+                Por favor, responde todas las preguntas marcadas con <span className="text-red-500 font-bold">*</span> para continuar
+              </p>
             </div>
 
             {error && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+              <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-600 rounded-md text-red-700 text-sm font-medium">
                 {error}
               </div>
             )}
@@ -218,7 +235,7 @@ export const PublicSurvey = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               {questions.map((question, index) => (
                 <div key={question.id} className="space-y-3">
-                  <label className="block text-lg font-medium text-gray-900">
+                  <label className="block text-lg font-bold text-gray-900 uppercase tracking-wide">
                     {index + 1}. {question.question_text}
                     {question.required && <span className="text-red-500 ml-1">*</span>}
                   </label>
@@ -227,7 +244,7 @@ export const PublicSurvey = () => {
                     <textarea
                       value={answers[question.id] || ''}
                       onChange={(e) => handleAnswerChange(question.id, e.target.value, question.type)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
                       rows={4}
                       placeholder="Escribe tu respuesta aquí..."
                       required={question.required}
@@ -237,7 +254,7 @@ export const PublicSurvey = () => {
                   {question.type === 'single' && (
                     <div className="space-y-2">
                       {question.options_list?.map((option) => (
-                        <label key={option.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <label key={option.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded-md hover:bg-primary-50 hover:border-primary-300 cursor-pointer transition-all">
                           <input
                             type="radio"
                             name={`question_${question.id}`}
@@ -245,9 +262,9 @@ export const PublicSurvey = () => {
                             checked={answers[question.id] === option.value}
                             onChange={(e) => handleAnswerChange(question.id, e.target.value, question.type)}
                             required={question.required}
-                            className="w-4 h-4 text-blue-600"
+                            className="w-4 h-4 text-primary-600"
                           />
-                          <span className="text-gray-700">{option.label}</span>
+                          <span className="text-gray-700 font-medium">{option.label}</span>
                         </label>
                       ))}
                     </div>
@@ -256,15 +273,15 @@ export const PublicSurvey = () => {
                   {question.type === 'multiple' && (
                     <div className="space-y-2">
                       {question.options_list?.map((option) => (
-                        <label key={option.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <label key={option.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded-md hover:bg-primary-50 hover:border-primary-300 cursor-pointer transition-all">
                           <input
                             type="checkbox"
                             value={option.value}
                             checked={(answers[question.id] || []).includes(option.value)}
                             onChange={() => handleAnswerChange(question.id, option.value, question.type)}
-                            className="w-4 h-4 text-blue-600 rounded"
+                            className="w-4 h-4 text-primary-600 rounded"
                           />
-                          <span className="text-gray-700">{option.label}</span>
+                          <span className="text-gray-700 font-medium">{option.label}</span>
                         </label>
                       ))}
                     </div>
@@ -273,7 +290,7 @@ export const PublicSurvey = () => {
                   {question.type === 'likert' && (
                     <div className="space-y-2">
                       {question.options_list?.map((option) => (
-                        <label key={option.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                        <label key={option.id} className="flex items-center gap-3 p-3 border border-gray-200 rounded-md hover:bg-primary-50 hover:border-primary-300 cursor-pointer transition-all">
                           <input
                             type="radio"
                             name={`question_${question.id}`}
@@ -281,9 +298,9 @@ export const PublicSurvey = () => {
                             checked={answers[question.id] === option.value}
                             onChange={(e) => handleAnswerChange(question.id, e.target.value, question.type)}
                             required={question.required}
-                            className="w-4 h-4 text-blue-600"
+                            className="w-4 h-4 text-primary-600"
                           />
-                          <span className="text-gray-700">{option.label}</span>
+                          <span className="text-gray-700 font-medium">{option.label}</span>
                         </label>
                       ))}
                     </div>
@@ -294,7 +311,7 @@ export const PublicSurvey = () => {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full px-6 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold text-lg disabled:bg-blue-400"
+                className="w-full px-6 py-4 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition font-bold text-lg uppercase tracking-wide disabled:bg-primary-400 shadow-md hover:shadow-lg"
               >
                 {submitting ? 'Enviando...' : 'Enviar Respuestas'}
               </button>

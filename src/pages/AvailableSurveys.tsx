@@ -42,7 +42,7 @@ export const AvailableSurveys = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
       </div>
     );
   }
@@ -50,8 +50,8 @@ export const AvailableSurveys = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Encuestas Disponibles</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2 uppercase tracking-tight">Encuestas Disponibles</h1>
+        <p className="text-gray-600 font-medium">
           Participa respondiendo las encuestas publicadas
         </p>
       </div>
@@ -65,19 +65,19 @@ export const AvailableSurveys = () => {
             placeholder="Buscar encuestas..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all bg-white shadow-sm"
           />
         </div>
       </div>
 
       {/* Lista de encuestas */}
       {filteredSurveys.length === 0 ? (
-        <div className="text-center py-12 bg-gray-50 rounded-lg">
+        <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
           <ClipboardList className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-sm font-medium text-gray-900">
+          <h3 className="mt-2 text-sm font-bold text-gray-900 uppercase tracking-wide">
             {searchTerm ? 'No se encontraron encuestas' : 'No hay encuestas disponibles'}
           </h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500 font-medium">
             {searchTerm ? 'Intenta con otro término de búsqueda' : 'Vuelve más tarde para ver nuevas encuestas'}
           </p>
         </div>
@@ -86,7 +86,7 @@ export const AvailableSurveys = () => {
           {filteredSurveys.map((survey) => (
             <div
               key={survey.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden"
+              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden border border-gray-200"
             >
               {survey.cover_image_url && (
                 <img
@@ -96,15 +96,15 @@ export const AvailableSurveys = () => {
                 />
               )}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase tracking-tight">
                   {survey.title}
                 </h3>
                 {survey.description && (
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  <p className="text-gray-600 mb-4 line-clamp-3 font-medium">
                     {survey.description}
                   </p>
                 )}
-                <div className="flex items-center text-sm text-gray-500 mb-4">
+                <div className="flex items-center text-sm text-gray-500 mb-4 font-medium">
                   <Calendar className="h-4 w-4 mr-1" />
                   <span>
                     Publicada {format(new Date(survey.created_at), "d 'de' MMMM, yyyy", { locale: es })}
@@ -112,7 +112,7 @@ export const AvailableSurveys = () => {
                 </div>
                 <button
                   onClick={() => navigate(`/s/${survey.public_slug}`)}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-primary-600 text-white py-3 px-4 rounded-md hover:bg-primary-700 transition-colors flex items-center justify-center gap-2 font-bold uppercase tracking-wide shadow-md hover:shadow-lg"
                 >
                   Responder Encuesta
                   <ArrowRight className="h-4 w-4" />

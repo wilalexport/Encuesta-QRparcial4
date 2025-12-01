@@ -144,19 +144,19 @@ export const MySurveys = () => {
 
   const getStatusBadge = (status: string) => {
     const styles = {
-      draft: 'bg-yellow-100 text-yellow-800',
-      published: 'bg-green-100 text-green-800',
-      closed: 'bg-gray-100 text-gray-800',
+      draft: 'bg-yellow-100 text-yellow-800 border-yellow-300',
+      published: 'bg-green-100 text-green-800 border-green-300',
+      closed: 'bg-gray-100 text-gray-800 border-gray-300',
     };
 
     const labels = {
-      draft: 'Borrador',
-      published: 'Publicado',
-      closed: 'Cerrado',
+      draft: 'BORRADOR',
+      published: 'PUBLICADO',
+      closed: 'CERRADO',
     };
 
     return (
-      <span className={`px-2 py-1 text-xs font-semibold rounded-full ${styles[status as keyof typeof styles]}`}>
+      <span className={`px-3 py-1 text-xs font-bold uppercase tracking-wide border ${styles[status as keyof typeof styles]}`}>
         {labels[status as keyof typeof labels]}
       </span>
     );
@@ -176,14 +176,14 @@ export const MySurveys = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center border-b border-gray-200 pb-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Mis Encuestas</h1>
-          <p className="text-gray-600 mt-1">Gestiona tus formularios y encuestas</p>
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight uppercase">Mis Encuestas</h1>
+          <p className="text-gray-600 mt-1 font-medium">Gestiona tus formularios</p>
         </div>
         <Link
           to="/surveys/create"
-          className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+          className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white hover:bg-primary-700 transition font-bold uppercase tracking-wide shadow-md hover:shadow-lg rounded-md"
         >
           <Plus className="w-5 h-5" />
           Crear Encuesta
@@ -191,35 +191,35 @@ export const MySurveys = () => {
       </div>
 
       {/* Filtros */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
         <button
           onClick={() => setFilter('all')}
-          className={`px-4 py-2 rounded-lg font-medium transition ${
-            filter === 'all' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'
+          className={`px-4 py-2 font-bold uppercase tracking-wide transition text-sm border rounded-md ${
+            filter === 'all' ? 'bg-primary-600 text-white border-primary-600 shadow-md' : 'bg-white text-gray-700 hover:bg-gray-50 border-gray-300'
           }`}
         >
           Todas ({surveys.length})
         </button>
         <button
           onClick={() => setFilter('draft')}
-          className={`px-4 py-2 rounded-lg font-medium transition ${
-            filter === 'draft' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'
+          className={`px-4 py-2 font-bold uppercase tracking-wide transition text-sm border rounded-md ${
+            filter === 'draft' ? 'bg-primary-600 text-white border-primary-600 shadow-md' : 'bg-white text-gray-700 hover:bg-gray-50 border-gray-300'
           }`}
         >
           Borradores
         </button>
         <button
           onClick={() => setFilter('published')}
-          className={`px-4 py-2 rounded-lg font-medium transition ${
-            filter === 'published' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'
+          className={`px-4 py-2 font-bold uppercase tracking-wide transition text-sm border rounded-md ${
+            filter === 'published' ? 'bg-primary-600 text-white border-primary-600 shadow-md' : 'bg-white text-gray-700 hover:bg-gray-50 border-gray-300'
           }`}
         >
           Publicadas
         </button>
         <button
           onClick={() => setFilter('closed')}
-          className={`px-4 py-2 rounded-lg font-medium transition ${
-            filter === 'closed' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'
+          className={`px-4 py-2 font-bold uppercase tracking-wide transition text-sm border rounded-md ${
+            filter === 'closed' ? 'bg-primary-600 text-white border-primary-600 shadow-md' : 'bg-white text-gray-700 hover:bg-gray-50 border-gray-300'
           }`}
         >
           Cerradas
@@ -228,30 +228,30 @@ export const MySurveys = () => {
 
       {/* Lista de Encuestas */}
       {surveys.length === 0 ? (
-        <div className="bg-white rounded-xl shadow-sm border p-12 text-center">
+        <div className="bg-white shadow border border-gray-200 p-12 text-center rounded-lg">
           <div className="max-w-md mx-auto">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Plus className="w-8 h-8 text-gray-400" />
+            <div className="w-16 h-16 bg-primary-100 border border-primary-300 flex items-center justify-center mx-auto mb-4 rounded-lg">
+              <Plus className="w-8 h-8 text-primary-700" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No tienes encuestas aún</h3>
-            <p className="text-gray-600 mb-6">Crea tu primera encuesta para comenzar a recopilar respuestas</p>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase tracking-tight">No tienes encuestas</h3>
+            <p className="text-gray-600 mb-6 font-medium">Crea tu primera encuesta para comenzar</p>
             <Link
               to="/surveys/create"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white hover:bg-primary-700 transition font-bold uppercase tracking-wide shadow-md hover:shadow-lg rounded-md"
             >
               <Plus className="w-5 h-5" />
-              Crear Primera Encuesta
+              Crear Encuesta
             </Link>
           </div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {surveys.map((survey) => (
-            <div key={survey.id} className="bg-white rounded-xl shadow-sm border hover:shadow-md transition">
+            <div key={survey.id} className="bg-white shadow border border-gray-200 hover:shadow-lg transition rounded-lg">
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{survey.title}</h3>
+                  <div className="flex-1 pr-2">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 uppercase tracking-tight">{survey.title}</h3>
                     {survey.description && (
                       <p className="text-sm text-gray-600 line-clamp-2">{survey.description}</p>
                     )}
@@ -259,18 +259,18 @@ export const MySurveys = () => {
                   {getStatusBadge(survey.status)}
                 </div>
 
-                <div className="space-y-2 mb-4 text-sm text-gray-600">
+                <div className="space-y-2 mb-4 text-sm text-gray-600 border-t border-b border-gray-200 py-3">
                   <div className="flex justify-between">
-                    <span>Preguntas:</span>
-                    <span className="font-medium">{survey.questions_count}</span>
+                    <span className="font-bold uppercase text-xs tracking-wider">Preguntas:</span>
+                    <span className="font-bold">{survey.questions_count}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Respuestas:</span>
-                    <span className="font-medium">{survey.responses_count}</span>
+                    <span className="font-bold uppercase text-xs tracking-wider">Respuestas:</span>
+                    <span className="font-bold">{survey.responses_count}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Actualizado:</span>
-                    <span className="font-medium">
+                    <span className="font-bold uppercase text-xs tracking-wider">Actualizado:</span>
+                    <span className="font-bold">
                       {format(new Date(survey.updated_at), 'd MMM yyyy', { locale: es })}
                     </span>
                   </div>
@@ -280,14 +280,14 @@ export const MySurveys = () => {
                 <div className="grid grid-cols-2 gap-2">
                   <Link
                     to={`/surveys/${survey.id}`}
-                    className="flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition text-sm font-medium"
+                    className="flex items-center justify-center gap-2 px-3 py-2 bg-primary-600 text-white hover:bg-primary-700 transition text-xs font-bold uppercase tracking-wide rounded-md shadow-md"
                   >
                     <Eye className="w-4 h-4" />
                     Ver
                   </Link>
                   <Link
                     to={`/surveys/${survey.id}/edit`}
-                    className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition text-sm font-medium"
+                    className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-900 hover:bg-gray-200 transition text-xs font-bold uppercase tracking-wide border border-gray-300 rounded-md"
                   >
                     <Edit className="w-4 h-4" />
                     Editar
@@ -295,7 +295,7 @@ export const MySurveys = () => {
                   {survey.status === 'published' && (
                     <Link
                       to={`/surveys/${survey.id}/qr`}
-                      className="flex items-center justify-center gap-2 px-3 py-2 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition text-sm font-medium"
+                      className="flex items-center justify-center gap-2 px-3 py-2 bg-accent-600 text-white hover:bg-accent-700 transition text-xs font-bold uppercase tracking-wide rounded-md shadow-md"
                     >
                       <QrCode className="w-4 h-4" />
                       QR
@@ -303,21 +303,21 @@ export const MySurveys = () => {
                   )}
                   <Link
                     to={`/surveys/${survey.id}/stats`}
-                    className="flex items-center justify-center gap-2 px-3 py-2 bg-green-50 text-green-600 rounded-lg hover:bg-green-100 transition text-sm font-medium"
+                    className="flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 text-white hover:bg-blue-700 transition text-xs font-bold uppercase tracking-wide rounded-md shadow-md"
                   >
                     <BarChart3 className="w-4 h-4" />
                     Stats
                   </Link>
                   <button
                     onClick={() => handleDuplicate(survey.id)}
-                    className="flex items-center justify-center gap-2 px-3 py-2 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 transition text-sm font-medium"
+                    className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-900 hover:bg-gray-200 transition text-xs font-bold uppercase tracking-wide border border-gray-300 rounded-md"
                   >
                     <Copy className="w-4 h-4" />
                     Duplicar
                   </button>
                   <button
                     onClick={() => handleDelete(survey.id, survey.title)}
-                    className="flex items-center justify-center gap-2 px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition text-sm font-medium"
+                    className="flex items-center justify-center gap-2 px-3 py-2 bg-red-600 text-white hover:bg-red-700 transition text-xs font-bold uppercase tracking-wide rounded-md shadow-md"
                   >
                     <Trash2 className="w-4 h-4" />
                     Eliminar

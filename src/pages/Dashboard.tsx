@@ -107,80 +107,80 @@ export const Dashboard = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center border-b border-gray-200 pb-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600 mt-1">
-            Bienvenido, {user?.profile.display_name || user?.email}
-            {user?.isAdmin && <span className="ml-2 px-2 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Admin</span>}
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight uppercase">Dashboard</h1>
+          <p className="text-gray-600 mt-1 font-medium">
+            {user?.profile.display_name || user?.email}
+            {user?.isAdmin && <span className="ml-2 px-2 py-1 bg-gray-900 text-white text-xs font-bold uppercase tracking-wide">Admin</span>}
           </p>
         </div>
         {(user?.isAdmin || user?.isCreator) && (
           <Link
             to="/surveys/create"
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+            className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition font-bold uppercase tracking-wide shadow-md hover:shadow-lg"
           >
             <Plus className="w-5 h-5" />
-            Crear Nueva Encuesta
+            Crear Encuesta
           </Link>
         )}
       </div>
 
       {/* KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-xl shadow-sm border p-6">
+        <div className="bg-white shadow border border-gray-200 p-6 rounded-lg hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Formularios</p>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Total Formularios</p>
               <p className="text-3xl font-bold text-gray-900 mt-2">{stats.total_surveys}</p>
             </div>
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <FileText className="w-6 h-6 text-blue-600" />
+            <div className="w-12 h-12 bg-primary-50 border border-primary-200 rounded-lg flex items-center justify-center">
+              <FileText className="w-6 h-6 text-primary-700" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border p-6">
+        <div className="bg-white shadow border border-gray-200 p-6 rounded-lg hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Respuestas</p>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Total Respuestas</p>
               <p className="text-3xl font-bold text-gray-900 mt-2">{stats.total_responses}</p>
             </div>
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <Users className="w-6 h-6 text-green-600" />
+            <div className="w-12 h-12 bg-accent-50 border border-accent-200 rounded-lg flex items-center justify-center">
+              <Users className="w-6 h-6 text-accent-700" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border p-6">
+        <div className="bg-white shadow border border-gray-200 p-6 rounded-lg hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Formularios Activos</p>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Formularios Activos</p>
               <p className="text-3xl font-bold text-gray-900 mt-2">{stats.active_surveys}</p>
             </div>
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <TrendingUp className="w-6 h-6 text-purple-600" />
+            <div className="w-12 h-12 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-center">
+              <TrendingUp className="w-6 h-6 text-blue-700" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border p-6">
+        <div className="bg-white shadow border border-gray-200 p-6 rounded-lg hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Respuestas (7 días)</p>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Respuestas (7 días)</p>
               <p className="text-3xl font-bold text-gray-900 mt-2">{stats.recent_responses}</p>
             </div>
-            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-              <Clock className="w-6 h-6 text-orange-600" />
+            <div className="w-12 h-12 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-center">
+              <Clock className="w-6 h-6 text-amber-700" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Actividad Reciente */}
-      <div className="bg-white rounded-xl shadow-sm border">
-        <div className="p-6 border-b">
-          <h2 className="text-xl font-semibold text-gray-900">Actividad Reciente</h2>
+      <div className="bg-white shadow border border-gray-200">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-xl font-bold text-gray-900 uppercase tracking-tight">Actividad Reciente</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -215,24 +215,24 @@ export const Dashboard = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
-                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        className={`px-3 py-1 inline-flex text-xs font-bold uppercase tracking-wide ${
                           activity.action === 'Publicado'
-                            ? 'bg-green-100 text-green-800'
+                            ? 'bg-green-100 text-green-800 border border-green-300'
                             : activity.action === 'Borrador'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-gray-100 text-gray-800'
+                            ? 'bg-yellow-100 text-yellow-800 border border-yellow-300'
+                            : 'bg-gray-100 text-gray-800 border border-gray-300'
                         }`}
                       >
                         {activity.action}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-medium">
                       {format(new Date(activity.timestamp), "d 'de' MMMM, yyyy", { locale: es })}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <Link
                         to={`/surveys/${activity.survey_id}`}
-                        className="text-blue-600 hover:text-blue-900"
+                        className="text-gray-900 hover:text-gray-700 font-bold uppercase tracking-wide"
                       >
                         Ver detalles →
                       </Link>
