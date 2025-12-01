@@ -47,6 +47,11 @@ RETURNS TRIGGER AS $$
 BEGIN
   INSERT INTO public.profiles (id, display_name)
   VALUES (NEW.id, NEW.raw_user_meta_data->>'display_name');
+  
+  -- Asignar rol 'viewer' por defecto
+  INSERT INTO public.user_roles (user_id, role)
+  VALUES (NEW.id, 'viewer');
+  
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;

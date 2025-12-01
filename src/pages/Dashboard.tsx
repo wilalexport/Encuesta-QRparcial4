@@ -25,11 +25,16 @@ export const Dashboard = () => {
 
   const loadDashboardData = async () => {
     try {
-      // Cargar estadísticas
-      const { data: surveys, error: surveysError } = await supabase
+      let surveysQuery = supabase
         .from('surveys')
-        .select('id, status')
-        .eq('owner_id', user!.id);
+        .select('id, status, updated_at, title');
+
+      // Si no es admin, solo mostrar sus propias encuestas
+      if (!user!.isAdmin) {
+        surveysQuery = surveysQuery.eq('owner_id', user!.id);
+      }
+
+      const { data: surveys, error: surveysError } = await surveysQuery;
 
       if (surveysError) throw surveysError;
 
@@ -56,13 +61,18 @@ export const Dashboard = () => {
         recent_responses: recentResponses,
       });
 
-      // Cargar actividad reciente (últimas encuestas modificadas)
-      const { data: recentSurveys, error: recentError } = await supabase
+      // Cargar actividad reciente
+      let activityQuery = supabase
         .from('surveys')
-        .select('id, title, updated_at, status')
-        .eq('owner_id', user!.id)
+        .select('id, title, updated_at, status, owner_id')
         .order('updated_at', { ascending: false })
         .limit(5);
+
+      if (!user!.isAdmin) {
+        activityQuery = activityQuery.eq('owner_id', user!.id);
+      }
+
+      const { data: recentSurveys, error: recentError } = await activityQuery;
 
       if (recentError) throw recentError;
 
@@ -102,15 +112,18 @@ export const Dashboard = () => {
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-gray-600 mt-1">
             Bienvenido, {user?.profile.display_name || user?.email}
+            {user?.isAdmin && <span className="ml-2 px-2 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Admin</span>}
           </p>
         </div>
-        <Link
-          to="/surveys/create"
-          className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
-        >
-          <Plus className="w-5 h-5" />
-          Crear Nueva Encuesta
-        </Link>
+        {(user?.isAdmin || user?.isCreator) && (
+          <Link
+            to="/surveys/create"
+            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+          >
+            <Plus className="w-5 h-5" />
+            Crear Nueva Encuesta
+          </Link>
+        )}
       </div>
 
       {/* KPIs */}

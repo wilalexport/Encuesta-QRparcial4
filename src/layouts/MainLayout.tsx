@@ -1,7 +1,7 @@
 // layouts/MainLayout.tsx
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Home, FileText, LogOut, Settings, User } from 'lucide-react';
+import { Home, FileText, LogOut, Settings, User, ClipboardList, CheckSquare } from 'lucide-react';
 
 export const MainLayout = () => {
   const { user, signOut } = useAuth();
@@ -64,13 +64,34 @@ export const MainLayout = () => {
               <Home className="w-5 h-5" />
               Dashboard
             </Link>
+            
+            {/* Enlaces para creadores y admins */}
+            {(user?.isAdmin || user?.isCreator) && (
+              <Link
+                to="/surveys"
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition"
+              >
+                <FileText className="w-5 h-5" />
+                Mis Encuestas
+              </Link>
+            )}
+            
+            {/* Enlaces para todos los usuarios (responder encuestas) */}
             <Link
-              to="/surveys"
+              to="/available-surveys"
               className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition"
             >
-              <FileText className="w-5 h-5" />
-              Mis Encuestas
+              <ClipboardList className="w-5 h-5" />
+              Encuestas Disponibles
             </Link>
+            <Link
+              to="/my-responses"
+              className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition"
+            >
+              <CheckSquare className="w-5 h-5" />
+              Mis Respuestas
+            </Link>
+            
             <Link
               to="/profile"
               className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition"

@@ -1,7 +1,7 @@
 // types/database.types.ts
 // Definición completa de tipos que reflejan el esquema de Supabase
 
-export type UserRole = 'admin' | 'creator';
+export type UserRole = 'admin' | 'creator' | 'viewer';
 
 export type SurveyStatus = 'draft' | 'published' | 'closed';
 
@@ -151,6 +151,7 @@ export interface AuthUser {
   roles: UserRole[];
   isAdmin: boolean;
   isCreator: boolean;
+  isViewer: boolean;
 }
 
 // Tipos para KPIs del Dashboard

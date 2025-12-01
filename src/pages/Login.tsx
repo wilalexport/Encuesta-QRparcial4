@@ -1,5 +1,5 @@
 // pages/Login.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { LogIn } from 'lucide-react';
@@ -9,8 +9,15 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signIn } = useAuth();
+  const { signIn, user } = useAuth();
   const navigate = useNavigate();
+
+  // Redirigir si ya está autenticado
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,10 +26,9 @@ export const Login = () => {
 
     try {
       await signIn(email, password);
-      navigate('/dashboard');
+      // No navegamos aquí, el useEffect lo hará cuando user se actualice
     } catch (err: any) {
       setError(err.message || 'Error al iniciar sesión');
-    } finally {
       setLoading(false);
     }
   };
