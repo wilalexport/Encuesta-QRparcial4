@@ -1,4 +1,4 @@
-// pages/admin/Users.tsx
+
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { Profile } from '@/types/database.types';
