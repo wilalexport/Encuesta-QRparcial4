@@ -83,7 +83,7 @@ export const Profile = () => {
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
               placeholder="Tu nombre completo"
             />
           </div>
@@ -107,9 +107,9 @@ export const Profile = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Género</label>
             <select
-              value={genero}
-              onChange={(e) => setGenero(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             >
               <option value="">Seleccionar...</option>
               <option value="masculino">Masculino</option>

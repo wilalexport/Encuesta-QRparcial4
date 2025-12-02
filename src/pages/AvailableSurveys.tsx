@@ -65,7 +65,7 @@ export const AvailableSurveys = () => {
             placeholder="Buscar encuestas..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all bg-white shadow-sm"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all bg-white shadow-sm text-gray-900"
           />
         </div>
       </div>

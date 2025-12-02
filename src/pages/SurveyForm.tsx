@@ -280,7 +280,7 @@ export const SurveyForm = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="Ej: Encuesta de Satisfacción"
           />
         </div>
@@ -291,7 +291,7 @@ export const SurveyForm = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="Descripción opcional de la encuesta"
           />
         </div>
@@ -313,7 +313,7 @@ export const SurveyForm = () => {
                     type="text"
                     value={question.question_text}
                     onChange={(e) => handleQuestionChange(qIndex, 'question_text', e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
                     placeholder="Escribe tu pregunta aquí"
                   />
                   <select
@@ -321,7 +321,7 @@ export const SurveyForm = () => {
                     onChange={(e) =>
                       handleQuestionChange(qIndex, 'type', e.target.value as QuestionType)
                     }
-                    className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900"
                   >
                     <option value="single">Opción única</option>
                     <option value="multiple">Opción múltiple</option>
@@ -341,7 +341,7 @@ export const SurveyForm = () => {
                           onChange={(e) =>
                             handleOptionChange(qIndex, oIndex, 'label', e.target.value)
                           }
-                          className="flex-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm"
+                          className="flex-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm text-gray-900"
                           placeholder="Texto de la opción"
                         />
                         {question.type !== 'likert' && question.options_list!.length > 2 && (

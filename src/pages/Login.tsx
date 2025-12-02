@@ -62,7 +62,7 @@ export const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-primary-600 focus:border-primary-600 text-sm sm:text-base transition-all"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-primary-600 focus:border-primary-600 text-sm sm:text-base text-gray-900 transition-all"
                 placeholder="usuario@empresa.com"
               />
             </div>
@@ -77,7 +77,7 @@ export const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-primary-600 focus:border-primary-600 text-sm sm:text-base transition-all"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-primary-600 focus:border-primary-600 text-sm sm:text-base text-gray-900 transition-all"
                 placeholder="••••••••"
               />
             </div>

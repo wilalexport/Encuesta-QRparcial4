@@ -244,7 +244,7 @@ export const PublicSurvey = () => {
                     <textarea
                       value={answers[question.id] || ''}
                       onChange={(e) => handleAnswerChange(question.id, e.target.value, question.type)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-600 focus:border-primary-600 transition-all text-gray-900"
                       rows={4}
                       placeholder="Escribe tu respuesta aquí..."
                       required={question.required}

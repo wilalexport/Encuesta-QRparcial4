@@ -99,7 +99,7 @@ export const AdminUsers = () => {
             placeholder="Buscar por nombre o ID..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900"
           />
         </div>
       </div>
@@ -195,7 +195,7 @@ export const AdminUsers = () => {
                   type="text"
                   value={editingUser.display_name || ''}
                   onChange={(e) => setEditingUser({ ...editingUser, display_name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900"
                 />
               </div>
               <div>
@@ -206,7 +206,7 @@ export const AdminUsers = () => {
                   type="text"
                   value={editingUser.phone || ''}
                   onChange={(e) => setEditingUser({ ...editingUser, phone: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900"
                 />
               </div>
               <div>
@@ -216,7 +216,7 @@ export const AdminUsers = () => {
                 <select
                   value={editingUser.genero || ''}
                   onChange={(e) => setEditingUser({ ...editingUser, genero: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900"
                 >
                   <option value="">Seleccionar...</option>
                   <option value="Masculino">Masculino</option>
@@ -232,7 +232,7 @@ export const AdminUsers = () => {
                   type="date"
                   value={editingUser.fecha_nacimiento || ''}
                   onChange={(e) => setEditingUser({ ...editingUser, fecha_nacimiento: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900"
                 />
               </div>
             </div>

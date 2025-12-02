@@ -57,7 +57,7 @@ export const Register = () => {
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 required
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base transition-all"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base text-gray-900 transition-all"
                 placeholder="Juan Pérez"
               />
             </div>
@@ -72,7 +72,7 @@ export const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base transition-all"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base text-gray-900 transition-all"
                 placeholder="usuario@empresa.com"
               />
             </div>
@@ -88,7 +88,7 @@ export const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base transition-all"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-accent-600 focus:border-accent-600 text-sm sm:text-base text-gray-900 transition-all"
                 placeholder="Mínimo 6 caracteres"
               />
             </div>
